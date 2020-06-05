@@ -235,6 +235,7 @@
 
 ;;; default file open at startup
 ;(find-file "~/Dropbox/org/work.txt")
+; can I really edit this file?
 
 ;;; Git-emacs
 ;;; git clone git://github.com/tsgates/git-emacs.git
