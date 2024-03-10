@@ -1,0 +1,167 @@
+;; Time-stamp: <2024-03-10 08:50:46 grogo .emacs> 
+(setq inhibit-startup-message t)
+
+(defvar insert-date-format "%Y/%m/%d"
+  "*Format for \\[insert-date] (c.f. 'format-time-string' for how to format).")
+
+(defun insert-time ()
+  "Insert the current time according to the variable \"insert-time-format\"."
+  (interactive "*")
+  (insert (format-time-string insert-time-format
+			      (current-time))))
+
+(defun insert-date ()
+  "Insert the current date according to the variable \"insert-date-format\"."
+  (interactive "*")
+  (insert (format-time-string insert-date-format
+			      (current-time))))
+
+(defun insert-time-and-date ()
+  "Insert the current date according to the variable \"insert-date-format\", then a space, then the current time according to the variable \"insert-time-format\"."
+  (interactive "*")
+  (progn
+    (insert-date)
+    (insert " ")
+    (insert-time)))
+
+
+(global-set-key [f5] 'insert-time-and-date)
+(global-set-key "\M-s" 'save-buffer)
+(global-set-key "\C-x/" 'point-to-register)
+(global-set-key "\C-xj" 'jump-to-register)
+(global-set-key "\M-g"  'goto-line)    ; M-g means 'goto-line
+;;(global-set-key "\C-z"  'undo)
+(global-set-key "\M-;"  'comment-or-uncomment-region)	; toggle comments
+;; autosave Tramp files to local dir
+(setq tramp-auto-save-directory "~/.emacs-backup/") 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; backups  (emacs will write backups and number them)
+(setq make-backup-files t ; do make backups
+      backup-by-copying t ; and copy them ...
+      backup-directory-alist '(("." . "~/.emacs-backup")) ; ... here
+      version-control t
+      kept-new-versions 2
+      kept-old-versions 5
+      delete-old-versions t)
+
+
+;; Furthermore, you must activate font-lock-mode in Org buffers, because significant functionality depends on font-locking being active. You can do this with either one of the following two lines (XEmacs user must use the second option):
+
+(global-font-lock-mode 1)                     ; for all buffers(
+;(add-hook 'org-mode-hook 'turn-on-font-lock)  ; Org buffers only
+
+;;----------------------------------------------------------------------
+;; ORG mode
+;;----------------------------------------------------------------------
+;; The following lines are always needed.  Choose your own keys.
+;(require 'org-install)
+;; ORG mode
+;; The following lines are always needed.  Choose your own keys.
+;; (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+;; (global-set-key "\C-cl" 'org-store-link)
+;; (global-set-key "\C-ca" 'org-agenda)
+;; (global-set-key "\C-cb" 'org-iswitchb)
+;; (global-set-key "\C-t" 'org-todo)
+;; (global-set-key "\C-cg" 'org-search-view)
+;; (setq org-agenda-ndays 10)
+
+;; (setq org-stuck-projects
+;;       '("+PROJECT/-MAYBE-DONE" ("NEXT" "TODO" "DELEGATED" "WAITING") ("@SHOP")
+;; 	"\\<IGNORE\\>"))
+
+;; (setq org-indent-mode t)
+;; Furthermore, you must activate font-lock-mode in Org buffers, because significant functionality depends on font-locking being active. You can do this with either one of the following two lines (XEmacs user must use the second option):
+
+(global-font-lock-mode 1)                     ; for all buffers(
+;(add-hook 'org-mode-hook 'turn-on-font-lock)  ; Org buffers only
+
+;; (setq org-todo-keywords '("TODO"
+;; 			  "DELEGATED" 
+;; 			  "WAITING" 
+;; 			  "DEFER" 
+;; 			  "DONE"
+;; 			  )
+;;       org-todo-interpretation 'sequence)
+
+;; ; tags
+;; (setq org-tag-alist '(("PROJECT" . ?p)
+;; 		      ("WORK" . ?w) 
+;; 		      ("HOME" . ?h) 
+;; 		      ("IT" . ?i)
+;; 		      ("SCHEDULE" . ?s)
+;; 		      ("SHOPPING" . ?g)
+;; 		      ("DAYOFF" . ?o)
+;; 		      ("BUSINESS" . ?b)
+;; 		      ("NEWSCHED" . ?d)
+;; 		      ("BOARD" . ?m)
+;; 		      ("NUCS" . ?n)
+;; 		      ("PET" . ?e)
+;; 		      ))
+
+
+;; ;; I disabled this since I want to avoid hitting Cmd-q accidentally.
+;; ;(global-set-key [(hyper q)] 'save-buffers-kill-emacs)
+
+
+;; ;; Python stuff - GREG
+;; (setenv "PATH" (concat "/opt/local/bin:/opt/local/sbin:"  
+;; 		       (getenv "PATH")))
+
+;;; IMPORTANT
+;;; THe following sets Emacs' 'exec-path', which is what it
+;;; uses to launch other programs from Emacs, such as python
+;;; setenv PATH just changes the path for the shell, but is not
+;;; used to figure out what programs to launch!!!
+;; (setq exec-path (cons "/usr/texbin" 
+;; 		      (cons "/opt/local/bin" 
+;; 			    (cons "/opt/local/lib/python2.5" 
+;; 				  exec-path))))
+
+;; (setenv "PYTHONPATH" (concat (getenv "PYTHONPATH")
+;; 			     "/Users/grogo/Development/shedule2/admin:/Users/grogo/Development/schedule2/utils:/Users/grogo/Development/schedule2:." )
+;; 	)
+;; (setq interpreter-mode-alist
+;;       (cons '("/opt/local/bin/python" . python-mode)
+;; 	    interpreter-mode-alist))
+
+;; (setq tex-command "/usr/texbin/pdflatex")
+;; (setq tex-start-commands "")
+
+;;; php mode
+(add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
+(autoload 'php-mode "php-mode" "PHP mode." t)
+
+;;; grep
+;; (setq grep-command "grep -nHi -e ")
+
+;;; default file open at startup
+;;(find-file "~/Dropbox/org/work.txt")
+
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(blink-cursor-mode t)
+ '(cua-normal-cursor-color "red")
+ '(grep-command "grep -niH -e ")
+ '(latex-run-command "/usr/texbin/pdflatex")
+ '(org-agenda-files (quote ("~/Dropbox/org/bodagenda.txt" "~/Dropbox/org/remote.org" "~/Dropbox/org/work.txt" "~/Dropbox/org/schedule.txt" "~/Dropbox/org/personal.txt" "~/Dropbox/org/journal.txt" "~/Dropbox/org/development.txt")))
+ '(show-paren-mode t)
+ '(desktop-save-mode t)
+ '(grep-command "grep -niH -e ")
+ '(paren-match-face 'paren-face-match-light)
+ '(paren-sexp-mode t)
+ '(save-place t nil (saveplace)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+;; MacOS swap option and Command keys
+(setq ns-command-modifier 'meta)
+(setq ns-option-modifier 'super)
