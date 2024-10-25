@@ -1,4 +1,4 @@
-;; Time-stamp: <2014-08-27 15:01:09 grogo .emacs>
+;; Time-stamp: <2024-10-25 14:06:18 grogo .emacs>
 (setq inhibit-startup-message t)
 
 (set-cursor-color "red")
@@ -13,7 +13,6 @@
 (fset 'yes-or-no-p 'y-or-n-p)   ; enable one letter y/n answers to yes/no
 (setq x-select-enable-clipboard t) ; copy-paste should work
 (transient-mark-mode t)          ; make the current 'selection' visible
-(iswitchb-mode 1)          ; smart buffer switching
 
 ;; A function to insert the time stamp at point.
 (defun stamp ()
@@ -86,25 +85,24 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(cua-normal-cursor-color "red")
+ '(custom-enabled-themes '(deeper-blue))
+ '(desktop-save-mode t)
  '(grep-command "grep -niH -e ")
  '(latex-run-command "/usr/texbin/pdflatex")
- '(mouse-wheel-scroll-amount (quote (1 ((shift) . 1) ((control)))))
-;; '(org-agenda-files (quote ("~/Dropbox/org/work.txt" "~/Dropbox/org/schedule.txt" "~/Dropbox/org/personal.txt" "~/Dropbox/org/journal.txt" "~/Dropbox/org/development.txt")))
- '(paren-match-face (quote paren-face-match-light))
+ '(mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control))))
+ '(paren-match-face 'paren-face-match-light)
  '(paren-sexp-mode t)
- '(save-place t nil (saveplace))
- '(show-paren-mode t)
- '(tool-bar-mode nil)
  '(py-pychecker-command "~/bin/pycheck.sh")
- '(py-pychecker-command-args (quote ("")))
+ '(py-pychecker-command-args '(""))
  '(python-check-command "~/bin/pycheck.sh")
-)
+ '(save-place t nil (saveplace))
+ '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(default ((t (:family "JetBrains Mono" :foundry "nil" :slant normal :weight regular :height 140 :width normal)))))
 
 ;;----------------------------------------------------------------------
 ;; ORG mode
@@ -235,9 +233,8 @@
 
 ;;; default file open at startup
 ;(find-file "~/Dropbox/org/work.txt")
-; can I really edit this file?
 
 ;;; Git-emacs
 ;;; git clone git://github.com/tsgates/git-emacs.git
-(add-to-list 'load-path "/Users/grogo/elisp/git-emacs")
-(require 'git-emacs)
+;(add-to-list 'load-path "/Users/grogo/elisp/git-emacs")
+;(require 'git-emacs)
