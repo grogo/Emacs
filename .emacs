@@ -1,4 +1,4 @@
-;; Time-stamp: <2024-10-25 14:06:18 grogo .emacs>
+;; Time-stamp: <2024-10-27 17:10:25 grogo .emacs>
 (setq inhibit-startup-message t)
 
 (set-cursor-color "red")
@@ -213,7 +213,7 @@
 			    exec-path)))
 
 (setenv "PYTHONPATH" (concat (getenv "PYTHONPATH")
-			     "/Users/grogo/www/schedule" )
+			     ":/Users/grogo/www/schedule" )
 	)
 
 (setenv "DYLD_LIBRARY_PATH" "/usr/local/mysql/lib")
