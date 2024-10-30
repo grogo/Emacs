@@ -1,4 +1,4 @@
-;; Time-stamp: <2024-10-27 17:10:25 grogo .emacs>
+;; Time-stamp: <2024-10-30 08:58:43 grogo .emacs>
 (setq inhibit-startup-message t)
 
 (set-cursor-color "red")
@@ -215,10 +215,6 @@
 (setenv "PYTHONPATH" (concat (getenv "PYTHONPATH")
 			     ":/Users/grogo/www/schedule" )
 	)
-
-(setenv "DYLD_LIBRARY_PATH" "/usr/local/mysql/lib")
-(setenv "MYSQL_UNIX_PORT" "/Applications/MAMP/tmp/mysql/mysql.sock")
-
 
 (setq tex-command "/usr/texbin/pdflatex")
 (setq tex-start-commands "")
