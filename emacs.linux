@@ -1,4 +1,4 @@
-;; Time-stamp: <2025-01-22 07:04:52 parallels emacs.linux>
+;; Time-stamp: <2025-01-22 08:12:41 parallels emacs.linux>
 (setq inhibit-startup-message t)
 
 (set-cursor-color "red")
@@ -87,8 +87,8 @@
  '(cua-normal-cursor-color "red")
  '(custom-enabled-themes '(deeper-blue))
  '(desktop-save-mode t)
+ '(font-use-system-font t)
  '(grep-command "grep -niH -e ")
- '(latex-run-command "/usr/texbin/pdflatex")
  '(mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control))))
  '(paren-match-face 'paren-face-match-light)
  '(paren-sexp-mode t)
@@ -102,7 +102,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "JetBrains Mono" :foundry "nil" :slant normal :weight regular :height 140 :width normal)))))
+ '(default ((t (:family "Ubuntu Sans Mono" :foundry "DAMA" :slant normal :weight regular :height 120 :width normal)))))
 
 ;;----------------------------------------------------------------------
 ;; ORG mode
@@ -213,22 +213,16 @@
 			    exec-path)))
 
 (setenv "PYTHONPATH" (concat (getenv "PYTHONPATH")
-			     ":/Users/grogo/www/schedule" )
+			     ":/home/parallels/www/schedule" )
 	)
 
-(setq tex-command "/usr/texbin/pdflatex")
-(setq tex-start-commands "")
-
 ;;; php mode
-(add-to-list 'load-path "/Users/grogo/elisp/php-mode")
-(add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
-(autoload 'php-mode "php-mode" "PHP mode." t)
+;(add-to-list 'load-path "/Users/grogo/elisp/php-mode")
+;(add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
+;(autoload 'php-mode "php-mode" "PHP mode." t)
 
 ;;; grep
 (setq grep-command "grep -nHi -e ")
-
-;;; default file open at startup
-;(find-file "~/Dropbox/org/work.txt")
 
 ;;; Git-emacs
 ;;; git clone git://github.com/tsgates/git-emacs.git
