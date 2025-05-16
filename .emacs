@@ -1,4 +1,4 @@
-;; Time-stamp: <2024-10-30 08:58:43 grogo .emacs>
+;; Time-stamp: <2025-05-02 09:03:43 grogo .emacs>
 (setq inhibit-startup-message t)
 
 (set-cursor-color "red")
@@ -90,6 +90,7 @@
  '(grep-command "grep -niH -e ")
  '(latex-run-command "/usr/texbin/pdflatex")
  '(mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control))))
+ '(package-selected-packages '(php-mode))
  '(paren-match-face 'paren-face-match-light)
  '(paren-sexp-mode t)
  '(py-pychecker-command "~/bin/pycheck.sh")
@@ -102,7 +103,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "JetBrains Mono" :foundry "nil" :slant normal :weight regular :height 140 :width normal)))))
+ '(default ((t (:family "JetBrains Mono" :foundry "nil" :slant normal :weight regular :height 160 :width normal)))))
 
 ;;----------------------------------------------------------------------
 ;; ORG mode
