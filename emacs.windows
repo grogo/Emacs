@@ -1,9 +1,8 @@
-;; Time-stamp: <2025-08-02 11:50:53 grogo .emacs>
+;; Time-stamp: <2025-08-01 16:54:20 greg .emacs>
 (setq inhibit-startup-message t)
 
-(set-cursor-color "red")
 ;;to manage the geometric size of initial window.
-(setq initial-frame-alist '((width . 86) (height . 52)))
+(setq initial-frame-alist '((width . 86) (height . 30)))
 
 (setq time-stamp-format "%:y-%02m-%02d %02H:%02M:%02S %u %f")
 (setq time-stamp-active t)
@@ -22,10 +21,6 @@
   (time-stamp)                          ;call the function to fill it in
                                         ;where we put it.
   )
-
-; Insert the date, the time, and the date and time at point. Insert the
-; date 31 days hence at point (eventually...). Useful for keeping
-; records. These are based on Glickstein.
 
 (defvar insert-time-format "%T"
   "*Format for \\[insert-time] (c.f. 'format-time-string' for how to format).")
@@ -75,8 +70,6 @@
       delete-old-versions t)
 
 
-;; Furthermore, you must activate font-lock-mode in Org buffers, because significant functionality depends on font-locking being active. You can do this with either one of the following two lines (XEmacs user must use the second option):
-
 (global-font-lock-mode 1)                     ; for all buffers(
 ;(add-hook 'org-mode-hook 'turn-on-font-lock)  ; Org buffers only
 (custom-set-variables
@@ -118,81 +111,75 @@
 ;(global-set-key "\C-cb" 'org-iswitchb)
 ;(global-set-key "\C-t" 'org-todo)
 ;(global-set-key "\C-cg" 'org-search-view)
-(setq org-agenda-ndays 10)
+;(setq org-agenda-ndays 10)
 ;; (setq org-stuck-projects
 ;;       '("+PROJECT/-MAYBE-DONE" ("NEXT" "TODO" "DELEGATED" "WAITING") ("@SHOP")
 ;;      "\\<IGNORE\\>"))
-(setq org-indent-mode t)
+;(setq org-indent-mode t)
 ;; Furthermore, you must activate font-lock-mode in Org buffers, because significant functionality depends on font-locking being active. You can do this with either one of the following two lines (XEmacs user must use the second option):
 
 (global-font-lock-mode 1)                     ; for all buffers(
 ;(add-hook 'org-mode-hook 'turn-on-font-lock)  ; Org buffers only
 
-(setq org-todo-keywords '("TODO"
-                 "HOLD"
-                 "DONE"
-                 )
-      org-todo-interpretation 'sequence)
+;; (setq org-todo-keywords '("TODO"
+;;                  "HOLD"
+;;                  "DONE"
+;;                  )
+;;       org-todo-interpretation 'sequence)
 
-; tags
-(setq org-tag-alist '(("PROJECT" . ?p)
-                ("WORK" . ?w)
-                ("HOME" . ?h)
-                ("IT" . ?i)
-                ("SCHEDULE" . ?s)
-                ("SHOPPING" . ?g)
-                ("DAYOFF" . ?o)
-                ("BUSINESS" . ?b)
-                ("NEWSCHED" . ?d)
-                ("BOARD" . ?m)
-                ("NUCS" . ?n)
-                ("PET" . ?e)
-                ))
+;; ; tags
+;; (setq org-tag-alist '(("PROJECT" . ?p)
+;;                 ("WORK" . ?w)
+;;                 ("HOME" . ?h)
+;;                 ("IT" . ?i)
+;;                 ("SCHEDULE" . ?s)
+;;                 ("SHOPPING" . ?g)
+;;                 ("DAYOFF" . ?o)
+;;                 ("BUSINESS" . ?b)
+;;                 ("NEWSCHED" . ?d)
+;;                 ("BOARD" . ?m)
+;;                 ("NUCS" . ?n)
+;;                 ("PET" . ?e)
+;;                 ))
 
-(setq org-agenda-custom-commands
-      '(("w" todo "WAITING" nil)
-	("n" todo "NEXT" nil)
-	("d" "Agenda + Next Actions" ((agenda) (todo "NEXT"))))
-      )
+;; (setq org-agenda-custom-commands
+;;       '(("w" todo "WAITING" nil)
+;; 	("n" todo "NEXT" nil)
+;; 	("d" "Agenda + Next Actions" ((agenda) (todo "NEXT"))))
+;;       )
 
-;; Remember.el mode
-;(org-remember-insinuate)
-(setq org-directory "~/Dropbox/org")
-(setq org-default-notes-file (concat org-directory "/work.txt"))
-(define-key global-map "\C-cr" 'org-remember)
+;; ;; Remember.el mode
+;; ;(org-remember-insinuate)
+;; (setq org-directory "~/Dropbox/org")
+;; (setq org-default-notes-file (concat org-directory "/work.txt"))
+;; (define-key global-map "\C-cr" 'org-remember)
 
-(setq org-remember-templates
-      '(("Work Todo" ?t "* TODO " "~/Dropbox/org/work.txt" "Tasks")
-        ("Schedule" ?s "* " "~/Dropbox/org/schedule.txt" "UPCOMING SCHEDULE BLOCK")
-        ("Idea" ?i "* " "~/Dropbox/org/personal.txt" "New Ideas")
-        ("Personal" ?p "* TODO " "~/Dropbox/org/personal.txt" "Tasks")
-	("Journal" ?j "* %T" "~/Dropbox/org/journal.txt" "Journal Entries")
-	("Shopping" ?g "* " "~/Dropbox/org/personal.txt" "Shopping")
-	("Bugs" ?b "* TODO" "~/Dropbox/org/development.txt" "BUGS")
-	))
+;; (setq org-remember-templates
+;;       '(("Work Todo" ?t "* TODO " "~/Dropbox/org/work.txt" "Tasks")
+;;         ("Schedule" ?s "* " "~/Dropbox/org/schedule.txt" "UPCOMING SCHEDULE BLOCK")
+;;         ("Idea" ?i "* " "~/Dropbox/org/personal.txt" "New Ideas")
+;;         ("Personal" ?p "* TODO " "~/Dropbox/org/personal.txt" "Tasks")
+;; 	("Journal" ?j "* %T" "~/Dropbox/org/journal.txt" "Journal Entries")
+;; 	("Shopping" ?g "* " "~/Dropbox/org/personal.txt" "Shopping")
+;; 	("Bugs" ?b "* TODO" "~/Dropbox/org/development.txt" "BUGS")
+;; 	))
 
 ;;;----------------------------------------------------------------------
 ;;; MacOS X specific stuff
-;;; ----------------------------------------------------------------------
-(setq mac-command-modifier 'meta)
-(setq mac-option-modifier 'meta)
-
-(global-set-key [(hyper a)] 'mark-whole-buffer)
-(global-set-key [(hyper v)] 'yank)
-(global-set-key [(hyper c)] 'kill-ring-save)
-(global-set-key [(hyper x)] 'kill-region)
-(global-set-key [(hyper s)] 'save-buffer)
-(global-set-key [(meta s)] 'save-buffer)
-(global-set-key [(hyper l)] 'goto-line)
-(global-set-key [(hyper o)] 'find-file)
-(global-set-key [(hyper f)] 'isearch-forward)
-(global-set-key [(hyper g)] 'isearch-repeat-forward)
-(global-set-key [(hyper w)]
-                (lambda () (interactive) (kill-buffer (current-buffer))))
-(global-set-key [(hyper .)] 'keyboard-quit)
-
-;; I disabled this since I want to avoid hitting Cmd-q accidentally.
-;(global-set-key [(hyper q)] 'save-buffers-kill-emacs)
+;; ;;; ----------------------------------------------------------------------
+;; (global-set-key [(hyper a)] 'mark-whole-buffer)
+;; (global-set-key [(hyper v)] 'yank)
+;; (global-set-key [(hyper c)] 'kill-ring-save)
+;; (global-set-key [(hyper x)] 'kill-region)
+;; (global-set-key [(hyper s)] 'save-buffer)
+;; (global-set-key [(meta s)] 'save-buffer)
+;; (global-set-key [(hyper l)] 'goto-line)
+;; (global-set-key [(hyper o)] 'find-file)
+;; (global-set-key [(hyper f)] 'isearch-forward)
+;; (global-set-key [(hyper g)] 'isearch-repeat-forward)
+;; (global-set-key [(hyper w)]
+;;                 (lambda () (interactive) (kill-buffer (current-buffer))))
+;; (global-set-key [(hyper .)] 'keyboard-quit)
 
 ;(require 'redo)
 (global-set-key [(meta z)] 'undo)
@@ -200,38 +187,29 @@
 (global-set-key "\C-xx" 'copy-to-register)
 (global-set-key "\C-xg" 'insert-register)
 
-;; Python stuff - GREG
-(setenv "PATH" (concat "/usr/local/bin:/usr/local/sbin:" 
-                 (getenv "PATH")))
+;; ;;; IMPORTANT
+;; ;;; THe following sets Emacs' 'exec-path', which is what it
+;; ;;; uses to launch other programs from Emacs, such as python
+;; ;;; setenv PATH just changes the path for the shell, but is not
+;; ;;; used to figure out what programs to launch!!!
+;; (setq exec-path (cons "/usr/texbin"
+;; 		      (cons "/usr/local/bin"
+;; 			    exec-path)))
 
-;;; IMPORTANT
-;;; THe following sets Emacs' 'exec-path', which is what it
-;;; uses to launch other programs from Emacs, such as python
-;;; setenv PATH just changes the path for the shell, but is not
-;;; used to figure out what programs to launch!!!
-(setq exec-path (cons "/usr/texbin"
-		      (cons "/usr/local/bin"
-			    exec-path)))
+;; (setenv "PYTHONPATH" (concat (getenv "PYTHONPATH")
+;; 			     ":/Users/grogo/www/schedule" )
+;; 	)
 
-(setenv "PYTHONPATH" (concat (getenv "PYTHONPATH")
-			     ":/Users/grogo/www/schedule" )
-	)
-
-(setq tex-command "/usr/texbin/pdflatex")
-(setq tex-start-commands "")
+;; (setq tex-command "/usr/texbin/pdflatex")
+;; (setq tex-start-commands "")
 
 ;;; php mode
+;;; install php-mode package with "M-x package-install"
 (add-to-list 'load-path "/Users/grogo/elisp/php-mode")
 (add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
+(add-to-list 'auto-mode-alist '("\\.php3\\'" . php-mode))
 (autoload 'php-mode "php-mode" "PHP mode." t)
 
 ;;; grep
 (setq grep-command "grep -nHi -e ")
 
-;;; default file open at startup
-;(find-file "~/Dropbox/org/work.txt")
-
-;;; Git-emacs
-;;; git clone git://github.com/tsgates/git-emacs.git
-;(add-to-list 'load-path "/Users/grogo/elisp/git-emacs")
-;(require 'git-emacs)
