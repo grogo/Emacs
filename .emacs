@@ -1,4 +1,4 @@
-;; Time-stamp: <2025-08-02 11:50:53 grogo .emacs>
+;; Time-stamp: <2026-03-10 19:36:55 grogo .emacs>
 (setq inhibit-startup-message t)
 
 (set-cursor-color "red")
@@ -90,7 +90,7 @@
  '(grep-command "grep -niH -e ")
  '(latex-run-command "/usr/texbin/pdflatex")
  '(mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control))))
- '(package-selected-packages '(php-mode))
+ '(package-selected-packages '(go-mode markdown-mode php-mode))
  '(paren-match-face 'paren-face-match-light)
  '(paren-sexp-mode t)
  '(py-pychecker-command "~/bin/pycheck.sh")
